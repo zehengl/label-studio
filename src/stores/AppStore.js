@@ -188,12 +188,29 @@ export default types
       });
     };
 
+    function getUrlArg(name, def, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+      if (!results) return def;
+      if (!results[2]) return def;
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
     /**
      * Load task from API
      */
     function loadTask() {
       if (self.task && self.task.load && self.task.id) {
-        return loadTaskAPI(`${API_URL.MAIN}${API_URL.TASKS}/${self.task.id}/`);
+        let _mains = getUrlArg('mains', '0');
+        let _zoom = getUrlArg('zoom', '1');
+        let _offsetx = getUrlArg('offsetx', '0');
+        let _offsety = getUrlArg('offsety', '0');
+        let post_fix = `?mains=` + _mains + '&offsetx=' + _offsetx + '&offsety=' + _offsety + '&zoom=' + _zoom;
+        post_fix = _mains === '0'? '': post_fix;
+
+        return loadTaskAPI(`${API_URL.MAIN}${API_URL.TASKS}/${self.task.id}/` + post_fix);
       } else if (self.explore && self.project && self.project.id) {
         return loadTaskAPI(`${API_URL.MAIN}${API_URL.PROJECTS}/${self.project.id}${API_URL.NEXT}`);
       }
