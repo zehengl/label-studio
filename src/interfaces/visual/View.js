@@ -56,6 +56,7 @@ const Model = types.model({
     "textarea",
     "pairwise",
     "video",
+    "treeselect",
   ]),
 });
 
