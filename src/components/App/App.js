@@ -38,6 +38,7 @@ import { DialogModel } from "../../interfaces/visual/Dialog";
  * Object
  */
 import { AudioModel } from "../../interfaces/object/Audio";
+import { VideoModel } from "../../interfaces/object/Video";
 import { AudioPlusModel } from "../../interfaces/object/AudioPlus";
 import { ImageModel } from "../../interfaces/object/Image";
 import { TextModel } from "../../interfaces/object/Text";

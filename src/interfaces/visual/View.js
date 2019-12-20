@@ -55,6 +55,7 @@ const Model = types.model({
     "dialog",
     "textarea",
     "pairwise",
+    "video",
   ]),
 });
 
