@@ -26,11 +26,15 @@
     "hexo-renderer-marked": "^2.0.0",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3",
-    "save": "^2.4.0"
+    "save": "^2.4.0",
+    "snyk": "^1.316.1"
   },
   "scripts": {
     "server": "hexo serve",
     "publish": "hexo generate && hexo clean && hexo deploy",
-    "new": "hexo new"
-  }
+    "new": "hexo new",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
